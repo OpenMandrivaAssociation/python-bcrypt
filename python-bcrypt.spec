@@ -12,7 +12,7 @@ License:	BSD
 Group:		Development/Python
 Url:		http://www.mindrot.org/py-bcrypt.html
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	python-nose
+BuildRequires:	python-devel, python-nose
 
 %description
 py-bcrypt is an implementation the OpenBSD Blowfish password hashing
