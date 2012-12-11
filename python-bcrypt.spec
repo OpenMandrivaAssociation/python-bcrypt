@@ -46,3 +46,11 @@ popd
 %files -f FILE_LIST
 %defattr(-,root,root)
 %doc ChangeLog LICENSE README TODO
+
+
+%changelog
+* Tue Nov 09 2010 Lev Givon <lev@mandriva.org> 0.2-1mdv2011.0
++ Revision: 595443
+- import python-bcrypt
+
+
