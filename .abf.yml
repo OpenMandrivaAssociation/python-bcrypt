@@ -1,2 +1,4 @@
+removed_sources:
+  py-bcrypt-0.2.tar.gz: 8fbcf01794557c6f9b37ce3a9c296fb8d2d24650
 sources:
-  "py-bcrypt-0.2.tar.gz": 8fbcf01794557c6f9b37ce3a9c296fb8d2d24650
+  py-bcrypt-0.4.tar.gz: 5a8201b7b1a2e787dab50f1bf6a34b42c4e80ce3

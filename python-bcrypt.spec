@@ -1,17 +1,13 @@
 %define tarname py-bcrypt
-%define name	python-bcrypt
-%define version 0.2
-%define release %mkrel 1
 
 Summary:	Python implementation of Blowfish password hashing algorithm
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Source0:	http://www.mindrot.org/files/%{tarname}/%{tarname}-%{version}.tar.gz
+Name:		python-bcrypt
+Version:	0.4
+Release:	1
+Source0:	http://py-bcrypt.googlecode.com/files/py-bcrypt-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
 Url:		http://www.mindrot.org/py-bcrypt.html
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	python-devel, python-nose
 
 %description
@@ -31,7 +27,6 @@ parametised, so it can be increased as computers get faster.
 %__python setup.py build
 
 %install
-%__rm -rf %{buildroot}
 PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
 
 %check
@@ -41,10 +36,8 @@ nosetests
 popd
 
 %clean
-%__rm -rf %{buildroot}
 
 %files -f FILE_LIST
-%defattr(-,root,root)
 %doc ChangeLog LICENSE README TODO
 
 
@@ -52,5 +45,6 @@ popd
 * Tue Nov 09 2010 Lev Givon <lev@mandriva.org> 0.2-1mdv2011.0
 + Revision: 595443
 - import python-bcrypt
+
 
 
