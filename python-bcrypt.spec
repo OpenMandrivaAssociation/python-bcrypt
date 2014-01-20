@@ -38,7 +38,7 @@ popd
 %clean
 
 %files -f FILE_LIST
-%doc ChangeLog LICENSE README TODO
+%doc  LICENSE README TODO
 
 
 %changelog
