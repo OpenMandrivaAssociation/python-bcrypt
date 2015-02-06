@@ -3,7 +3,7 @@
 Summary:	Python implementation of Blowfish password hashing algorithm
 Name:		python-bcrypt
 Version:	0.4
-Release:	1
+Release:	2
 Source0:	http://py-bcrypt.googlecode.com/files/py-bcrypt-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
