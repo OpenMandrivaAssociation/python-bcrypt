@@ -38,11 +38,7 @@ Summary:            %{sum}
 %{?python_provide:%python_provide python2-%{modname}}
 
 Requires:           python2-six
-%if (0%{?fedora} && 0%{?fedora} <= 27) || (0%{?rhel} && 0%{?rhel} <= 7)
-Requires:           python-cffi
-%else
 Requires:           python2-cffi
-%endif
 Provides:           py-bcrypt = 0.4-11
 Obsoletes:          py-bcrypt < 0.4-11
 
