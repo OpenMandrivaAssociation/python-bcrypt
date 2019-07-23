@@ -6,14 +6,14 @@
 %global sum     Modern password hashing for your software and your servers
 
 Name:               python-bcrypt
-Version:            3.1.4
-Release:            6%{?dist}
+Version:	3.1.7
+Release:	1
 Summary:            %{sum}
 
 #crypt_blowfish code is in Public domain and all other code in ASL 2.0
 License:            ASL 2.0 and Public Domain and BSD
 URL:                http://pypi.python.org/pypi/bcrypt
-Source0:            https://files.pythonhosted.org/packages/source/b/%{modname}/%{modname}-%{version}.tar.gz
+Source0:	https://files.pythonhosted.org/packages/fa/aa/025a3ab62469b5167bc397837c9ffc486c42a97ef12ceaa6699d8f5a5416/bcrypt-3.1.7.tar.gz
 
 BuildRequires:      python2-devel
 BuildRequires:      python2-setuptools
