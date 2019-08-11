@@ -15,10 +15,12 @@ License:            ASL 2.0 and Public Domain and BSD
 URL:                http://pypi.python.org/pypi/bcrypt
 Source0:	https://files.pythonhosted.org/packages/fa/aa/025a3ab62469b5167bc397837c9ffc486c42a97ef12ceaa6699d8f5a5416/bcrypt-3.1.7.tar.gz
 
+Requires:           python-six
+Requires:           python-cffi
+
 BuildRequires:      python2-devel
 BuildRequires:      python2-setuptools
 BuildRequires:      python2-six
-#BuildRequires:      python2-pytest
 BuildRequires:      python2-cffi
 
 %if 0%{?with_python3}
@@ -26,12 +28,10 @@ BuildRequires:      python3-devel
 BuildRequires:      python-setuptools
 BuildRequires:      python-cffi
 BuildRequires:      python-six
-#BuildRequires:      python-pytest
 %endif
 
 %description
 %{sum}.
-
 
 %package -n python2-%{modname}
 Summary:            %{sum}
@@ -44,23 +44,6 @@ Obsoletes:          py-bcrypt < 0.4-11
 
 %description -n python2-%{modname}
 %{sum}.
-
-
-%if 0%{?with_python3}
-%package -n python3-%{modname}
-Summary:            %{sum}
-%{?python_provide:%python_provide python3-%{modname}}
-
-Requires:           python3-six
-Requires:           python3-cffi
-Conflicts:          python3-py-bcritp
-Provides:           python3-py-bcrypt = 0.4-11
-Obsoletes:          python3-py-bcrypt < 0.4-11
-
-%description -n python3-%{modname}
-%{sum}.
-%endif
-
 
 %prep
 %autosetup -n %{modname}-%{version}
@@ -96,17 +79,14 @@ find %{buildroot}%{python3_sitearch} -name '*.so' -exec chmod 755 {} ';'
 %{__python3} setup.py test
 %endif
 
+%files
+%doc README.rst
+%license LICENSE
+%{python_sitearch}/%{modname}/
+%{python_sitearch}/%{modname}-%{version}*
 
 %files -n python2-%{modname}
 %doc README.rst
 %license LICENSE
 %{python2_sitearch}/%{modname}/
 %{python2_sitearch}/%{modname}-%{version}*
-
-%if 0%{?with_python3}
-%files -n python3-%{modname}
-%doc README.rst
-%license LICENSE
-%{python3_sitearch}/%{modname}/
-%{python3_sitearch}/%{modname}-%{version}*
-%endif
