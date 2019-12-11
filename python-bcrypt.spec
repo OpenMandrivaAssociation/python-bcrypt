@@ -7,7 +7,7 @@
 
 Name:               python-bcrypt
 Version:	3.1.7
-Release:	1
+Release:	2
 Summary:            %{sum}
 
 #crypt_blowfish code is in Public domain and all other code in ASL 2.0
