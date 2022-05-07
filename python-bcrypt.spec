@@ -7,7 +7,7 @@
 
 Name:               python-bcrypt
 Version:	3.2.0
-Release:	1
+Release:	2
 Summary:            %{sum}
 
 #crypt_blowfish code is in Public domain and all other code in ASL 2.0
@@ -20,8 +20,8 @@ Requires:           python-cffi
 
 BuildRequires:      python2-devel
 BuildRequires:      python2-setuptools
-BuildRequires:      python2-six
-BuildRequires:      python2-cffi
+BuildRequires:      python-six
+BuildRequires:      python-cffi
 
 %if 0%{?with_python3}
 BuildRequires:      python3-devel
@@ -37,8 +37,8 @@ BuildRequires:      python-six
 Summary:            %{sum}
 %{?python_provide:%python_provide python2-%{modname}}
 
-Requires:           python2-six
-Requires:           python2-cffi
+Requires:           python-six
+Requires:           python-cffi
 Provides:           py-bcrypt = 0.4-11
 Obsoletes:          py-bcrypt < 0.4-11
 
