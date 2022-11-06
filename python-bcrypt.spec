@@ -1,3 +1,5 @@
+%undefine _debugsource_packages
+
 %global module bcrypt
 
 Summary:	Modern password hashing for your software and your servers
