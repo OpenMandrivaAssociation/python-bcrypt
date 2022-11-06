@@ -2,7 +2,7 @@
 
 Summary:	Modern password hashing for your software and your servers
 Name:		python-bcrypt
-Version:	3.2.2
+Version:	4.0.1
 Release:	1
 #crypt_blowfish code is in Public domain and all other code in ASL 2.0
 License:	ASL 2.0 and Public Domain and BSD
