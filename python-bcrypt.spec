@@ -11,9 +11,10 @@ URL:		https://github.com/pyca/bcrypt
 Source0:	https://pypi.python.org/packages/source/b/%{module}/%{module}-%{version}.tar.gz
 
 BuildRequires:  pkgconfig(python)
-BuildRequires:	python3dist(cffi)
-BuildRequires:  python3dist(six)
-BuildRequires:	python3dist(setuptools)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(cffi)
+BuildRequires:  python%{pyver}dist(six)
+BuildRequires:	python%{pyver}dist(setuptools)
 
 %description
 A good password hashing for your software and your servers written in Python.
