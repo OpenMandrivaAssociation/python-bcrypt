@@ -24,7 +24,7 @@ A good password hashing for your software and your servers written in Python.
 %license LICENSE
 %doc README.rst
 %{python_sitearch}/%{module}/
-%{python_sitearch}/%{module}-%{version}-py%{pyver}.egg-info/
+%{python_sitearch}/*.*-info
 
 #----------------------------------------------------------------------------
 
@@ -40,4 +40,3 @@ A good password hashing for your software and your servers written in Python.
 
 %check
 %{__python3} setup.py test
-
