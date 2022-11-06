@@ -15,6 +15,7 @@ BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(cffi)
 BuildRequires:  python%{pyver}dist(six)
 BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(setuptools-rust)
 
 %description
 A good password hashing for your software and your servers written in Python.
