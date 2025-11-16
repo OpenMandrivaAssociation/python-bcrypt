@@ -11,7 +11,7 @@
 
 Summary:	Modern password hashing for your software and your servers
 Name:		python-bcrypt
-Version:	4.3.0
+Version:	5.0.0
 Release:	1
 # crypt_blowfish code is in Public domain and all other code in Apache 2.0,
 # rust vendor crates mixture of Apache-2.0, MIT, Unlicence -
@@ -20,7 +20,7 @@ License:	Apache-2.0 AND Public Domain AND BSD-3-Clause AND MIT AND (Apache-2.0 O
 Group:		Development/Python
 URL:		https://github.com/pyca/bcrypt
 Source0:	https://pypi.python.org/packages/source/b/%{oname}/%{oname}-%{version}.tar.gz
-Source1:	_bcrypt-4.3.0-vendor.tar.xz
+Source1:	_%{oname}-%{version}-vendor.tar.xz
 
 BuildRequires:  pkgconfig(python)
 BuildRequires:	python%{pyver}dist(pip)
