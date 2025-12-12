@@ -12,7 +12,7 @@
 Summary:	Modern password hashing for your software and your servers
 Name:		python-bcrypt
 Version:	5.0.0
-Release:	1
+Release:	2
 # crypt_blowfish code is in Public domain and all other code in Apache 2.0,
 # rust vendor crates mixture of Apache-2.0, MIT, Unlicence -
 # see generated LICENSE.dependencies in built rpm for full list.
