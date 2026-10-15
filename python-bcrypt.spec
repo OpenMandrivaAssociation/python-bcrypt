@@ -62,6 +62,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 # pyo3 0.26 abi3 falls back to the 3.14 stable ABI on a 3.15 interpreter.
 export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 export CARGO_NET_OFFLINE=true
+# Cargo.toml sets lto = "thin". Combined with the distro
+# -C linker-plugin-lto, rustc aborts in LLVM on __rust_alloc.
+export CARGO_PROFILE_RELEASE_LTO=off
 export CARGO_HOME=$PWD/.cargo
 %py_build
 
