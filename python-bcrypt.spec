@@ -12,7 +12,7 @@
 Summary:	Modern password hashing for your software and your servers
 Name:		python-bcrypt
 Version:	5.0.0
-Release:	2
+Release:	3
 # crypt_blowfish code is in Public domain and all other code in Apache 2.0,
 # rust vendor crates mixture of Apache-2.0, MIT, Unlicence -
 # see generated LICENSE.dependencies in built rpm for full list.
@@ -22,15 +22,14 @@ URL:		https://github.com/pyca/bcrypt
 Source0:	https://pypi.python.org/packages/source/b/%{oname}/%{oname}-%{version}.tar.gz
 Source1:	_%{oname}-%{version}-vendor.tar.xz
 
-BuildRequires:  pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(cffi)
-BuildRequires:  python%{pyver}dist(six)
+BuildRequires:	python%{pyver}dist(six)
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(setuptools-rust)
 BuildRequires:	python%{pyver}dist(wheel)
 BuildRequires:	cargo
-BuildRequires:	rust-packaging
 %if %{with tests}
 BuildRequires:	python%{pyver}dist(pytest)
 %endif
@@ -40,15 +39,19 @@ A good password hashing for your software and your servers written in Python.
 
 %prep
 %autosetup -n %{module}-%{version} -p1 -a1
-%cargo_prep -v vendor
+# Crates are already vendored. rust-packaging pulls python-rust2rpm, which
+# still requires Python 3.14.
+rm -f Cargo.toml.orig src/_bcrypt/Cargo.toml.orig
+mkdir -p .cargo
+cat > .cargo/config.toml << 'EOF'
+[net]
+offline = true
 
-cat >>.cargo/config << EOF
 [source.crates-io]
 replace-with = "vendored-sources"
 
 [source.vendored-sources]
 directory = "vendor"
-
 EOF
 
 # remove remote url github badge clutter from README.rst
@@ -56,11 +59,17 @@ sed -i '4,9d;' README.rst
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+# pyo3 0.26 abi3 falls back to the 3.14 stable ABI on a 3.15 interpreter.
+export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
+export CARGO_NET_OFFLINE=true
+export CARGO_HOME=$PWD/.cargo
 %py_build
 
 cd src/_bcrypt
-%cargo_license_summary
-%{cargo_license} > ../../LICENSE.dependencies
+cargo tree --locked --offline --edges no-build,no-dev,no-proc-macro \
+	--prefix none --format '{l}: {p}' \
+	| sed -e "s: ($(pwd)[^)]*)::g" -e 's: / :/:g' -e 's:/: OR :g' \
+	| sort -u > ../../LICENSE.dependencies
 
 
 %install
